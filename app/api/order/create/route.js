@@ -1,6 +1,8 @@
 import { inngest } from "@/config/inngest";
+import connectDB from "@/config/db";
 import Product from "@/models/Product";
 import User from "@/models/User";
+import Order from "@/models/Order";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
@@ -22,6 +24,16 @@ export async function POST(request) {
             return await acc + product.offerPrice * item.quantity;
         }, 0)
 
+        // Persist order immediately (fallback; avoids reliance on background worker)
+        const now = Date.now()
+        await connectDB()
+        await Order.findOneAndUpdate(
+            { userId, date: now },
+            { userId, address, items, amount: amount + Math.floor(amount * 0.02), date: now },
+            { upsert: true }
+        )
+
+        // Also emit event so the background processor can run in other environments.
         await inngest.send({
             name: 'order/created',
             data: {
@@ -29,7 +41,7 @@ export async function POST(request) {
                 address,
                 items,
                 amount: amount + Math.floor(amount * 0.02),
-                date: Date.now()
+                date: now
             }
         })
 
