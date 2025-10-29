@@ -1,6 +1,7 @@
 import React from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -23,16 +24,16 @@ const Footer = () => {
             <h2 className="font-medium text-gray-900 mb-5">Company</h2>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="hover:underline transition" href="#">Home</a>
+                <Link className="hover:underline transition" href="/">Home</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">About us</a>
+                <Link className="hover:underline transition" href="/about">About us</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">Contact us</a>
+                <Link className="hover:underline transition" href="/contact">Contact us</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">Privacy policy</a>
+                <Link className="hover:underline transition" href="/privacy-policy">Privacy policy</Link>
               </li>
             </ul>
           </div>
