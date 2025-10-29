@@ -9,10 +9,12 @@ const Footer = () => {
         <div className="w-4/5">
           <Image className="w-28 md:w-32" src={assets.logo} alt="logo" />
           <p className="mt-6 text-sm">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Hey, I’m Tommy Web Dev. I keep things simple and clean — this store is
+            my space to build the kind of shopping experience I like: fast,
+            minimal, and straight to the point. From curated tech picks to
+            practical accessories, every product here is chosen for everyday use,
+            solid value, and no‑nonsense performance. Thanks for being here —
+            I’m always improving the shop to make it smoother and more enjoyable.
           </p>
         </div>
 
@@ -41,13 +43,13 @@ const Footer = () => {
             <h2 className="font-medium text-gray-900 mb-5">Get in touch</h2>
             <div className="text-sm space-y-2">
               <p>+1-234-567-890</p>
-              <p>contact@greatstack.dev</p>
+              <p><a className="hover:underline" href="mailto:contact@tommywebdev.com">contact@tommywebdev.com</a></p>
             </div>
           </div>
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm">
-        Copyright 2025 © GreatStack.dev All Right Reserved.
+        Copyright 2025 © Tommy Web Dev. All Rights Reserved.
       </p>
     </footer>
   );
